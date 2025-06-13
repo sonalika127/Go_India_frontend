@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'login_page.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -14,6 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
@@ -25,26 +25,38 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[700],
+      backgroundColor: const Color(0xFF0D47A1), // Dark blue
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        // ✅ This centers the whole stack vertically
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            const Text(
-              'Indian Ride',
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // ✅ Here’s where the animation goes:
+            // 🇮🇳 India flag in center
             Lottie.asset(
-              'assets/bike_ride.json',
-              height: 300,
+              'assets/india_flag.json',
+              width: 250,
               repeat: true,
+            ),
+
+            // 🛵 Rider and title in center above flag
+            Column(
+              mainAxisSize: MainAxisSize.min, // ✅ Center vertically
+              children: [
+                const Text(
+                  'Indian Ride',
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Lottie.asset(
+                  'assets/bike_ride.json',
+                  height: 300,
+                  repeat: true,
+                ),
+              ],
             ),
           ],
         ),
