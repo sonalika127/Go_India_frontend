@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'real_home_page.dart';
 
 class HomePage extends StatefulWidget {
   final String phone;
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final List<String> _genders = ['Male', 'Female', 'Other'];
 
   Future<void> _saveDetails() async {
-    const String apiUrl = 'http://10.0.2.2:5002/api/user/save';
+    const String apiUrl = 'http://192.168.1.10:5002/api/user/save';
 
     try {
       final response = await http.post(
@@ -35,6 +36,12 @@ class _HomePageState extends State<HomePage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Details updated successfully!')),
         );
+        Future.delayed(const Duration(milliseconds: 500), () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const RealHomePage()),
+        );
+      });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to update details: ${response.body}')),

@@ -44,6 +44,11 @@ dev_dependencies:
     sdk: flutter
   google_maps_flutter: ^2.5.0
   geolocator: ^10.1.0
+  google_fonts: ^6.1.0
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  nominatim_geocoding: ^0.0.6
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -56,17 +61,19 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
   assets:
-    - assets/scooter.png
-    - assets/car.png
-    - assets/auto.png
+    - assets/images/bike.png
+    - assets/images/car.png
+    - assets/images/auto.png
+    - assets/images/parcel.png
     - assets/bike_ride.json
     - assets/india_flag.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+  
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -84,6 +91,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  
   # fonts:
   #   - family: Schyler
   #     fonts:
